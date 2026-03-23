@@ -26,7 +26,7 @@ export default function Theme() {
                         <FiMoon />
                     </div>
                     <div  className={"w-8 cursor-pointer h-8 p-1 bg-zinc-500/30 rounded-full active:scale-95 transition-all duration-300"}>
-                        <Image alt="lang" src={"./icons/dutch.svg"} width={0} height={0} className={"w-full"}/>
+                        <Image alt="lang" src={"./icons/english.svg"} width={0} height={0} className={"w-full"}/>
                     </div>
                 </div>
             </div>
