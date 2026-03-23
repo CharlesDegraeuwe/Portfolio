@@ -4,7 +4,7 @@ import {FiGithub} from "react-icons/fi";
 import {MdAlternateEmail} from "react-icons/md";
 
 export function Aside() {
-    return (<aside className={`w-12 border-x border-zinc-300 min-h-full flex gap-7 py-30 flex-col justify-end items-center`}>
+    return (<aside className={`left-2 absolute h-screen w-12 border-x border-zinc-300 min-h-full flex gap-7 py-30 flex-col justify-end items-center`}>
         <Link target="_blank" href={"https://github.com/CharlesDegraeuwe"} className={"w-full bg-zinc-100"}>
             <div className={"min-w-full py-2 border-y  border-zinc-300 flex items-center justify-center"}>
                 <FaGithub  size={20}/>

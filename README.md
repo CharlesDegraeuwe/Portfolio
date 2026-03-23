@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Charles Degraeuwe
+
+Personal portfolio website built with modern web technologies, focused on clean design, performance, and user experience.
+
+## Tech Stack
+Next.js (App Router)
+Tailwind CSS
+Bun (runtime & package manager)
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and start the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+```
+bun install
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
+in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Main entry point:
+```
+app/page.tsx
+```
 
-## Learn More
+The app uses Next.js App Router structure.
+Changes are reflected instantly during development.
 
-To learn more about Next.js, take a look at the following resources:
+## Styling
+Tailwind CSS for utility-first styling
+Focus on responsive design and clean UI
+Custom components and layout system
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Performance
+Optimized fonts using next/font
+Fast builds and dev environment powered by Bun
+Lightweight and minimal dependencies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+Recommended: deploy via Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+bun run build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Or connect the repository directly to Vercel for automatic deployments.
+
+## Resources
+https://nextjs.org/docs
+
+<i>Feel free to reach out or check out my work through this portfolio.
+</br>
+[mail me](mailto:charles.degraeuwe@icloud.com)
