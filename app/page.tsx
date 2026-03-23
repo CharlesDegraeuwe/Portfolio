@@ -1,9 +1,12 @@
 import Image from "next/image";
-import Header from "@/components/Header";
-import {Aside} from "@/components/Aside";
+import Header from "@/components/UI/header";
+import {Aside} from "@/components/UI/aside";
+import Landing from "@/components/UI/landing";
+import {FiMonitor, FiMoon, FiSun} from "react-icons/fi";
 
 export default function Home() {
   return (
+<<<<<<< Updated upstream
       <div className="min-h-screen flex flex-col items-center bg-zinc-100 font-sans dark:bg-black">
           <Header/>
           <main className={"flex flex-row flex-1 w-full min-h-full px-2"}>
@@ -16,5 +19,10 @@ export default function Home() {
           </main>
 
     </div>
+=======
+      <div className="w-full h-full">
+          <Landing/>
+      </div>
+>>>>>>> Stashed changes
   );
 }
