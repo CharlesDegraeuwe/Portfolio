@@ -28,12 +28,10 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
         <DarkModeProvider>
             <div className="min-h-full flex flex-col items-center bg-zinc-100 font-sans dark:bg-zinc-900">
                 <Header/>
-                <main className="flex flex-1 w-screen h-full items-center justify-center">
+                <main className="h-screen flex flex-1 w-screen items-center justify-center overflow-y-auto scroll-hidden">
                     <Aside/>
-                    <section className="min-h-screen w-full max-w-4xl flex-col items-center justify-between py-32 px-16 sm:items-start">
-                        <div className="w-full flex items-center justify-center ">
-                            {children}
-                        </div>
+                    <section className="h-screen w-full max-w-4xl flex-col items-center justify-between py-32 px-16 sm:items-start">
+                        {children}
                     </section>
                     <Theme/>
                 </main>
