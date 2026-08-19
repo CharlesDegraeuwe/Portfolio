@@ -1,27 +1,29 @@
 import AnimateOnMount from "./AnimateOnMount.tsx";
+import type {SetStateAction} from "react";
 
 
 interface BurgerMenuProps {
     isOpen: boolean;
+    setIsOpen: React.Dispatch<SetStateAction<boolean>>
 }
 
 const BurgerMenu: React.FC<BurgerMenuProps> = (props) => {
-    const {isOpen} = props;
+    const {isOpen, setIsOpen} = props;
     return (<div className={`burger_menu ${isOpen ? "burger_active" : ""}`}>
         <div className={"burger_menu_outer_container"}>
             <div>
                 <div>
-                    <a href="/">
+                    <a href="/" onClick={() => setIsOpen(false)}>
                         <AnimateOnMount show={isOpen} delay={550}>
                             Home
                         </AnimateOnMount>
                     </a>
-                    <a href="/work">
+                    <a href="/work" onClick={() => setIsOpen(false)}>
                         <AnimateOnMount show={isOpen} delay={650}>
                             Work
                         </AnimateOnMount>
                     </a>
-                    <a href="/blog">
+                    <a href="/blog" onClick={() => setIsOpen(false)}>
                         <AnimateOnMount show={isOpen} delay={750}>
                             Blog
                         </AnimateOnMount>
@@ -33,7 +35,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = (props) => {
                         FIND ME ELSEWHERE
                           </AnimateOnMount>
                     </span>
-                    <a href="" className={"home_a"}>
+                    <a href="" className={"home_a"} >
                         <AnimateOnMount show={isOpen} delay={650}>
                             Instagram
                         </AnimateOnMount>

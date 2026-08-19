@@ -1,0 +1,38 @@
+---
+import {getCollection, render} from 'astro:content';
+import MySiteLayout from '../../layouts/MySiteLayout.astro';
+import ArrowLeft from '@lucide/astro/icons/arrow-left';
+
+export async function getStaticPaths() {
+    const projects = await getCollection('work');
+    return projects.map((project) => ({
+        params: {id: project.id},   // studo, jurimesh, ...
+        props: {project},
+    }));
+}
+
+const {project} = Astro.props;
+const {Content} = await render(project);   // markdown-body -> component
+---
+<MySiteLayout title={project.data.title}>
+    <main class="main-page gap-5 flex flex-col">
+        <div class="w-full max-w-200 flex flex-col gap-8">
+            <a href="/work" class="home_a flex items-center gap-2 text-sm opacity-60 underline-none hover:opacity-100 w-fit">
+                <ArrowLeft size={14}/>
+                Back to work
+            </a>
+
+            <section class="flex flex-col gap-1">
+                <h3 class="text-2xl">{project.data.date}</h3>
+                <h1>{project.data.title}</h1>
+                <h2>{project.data.description}</h2>
+            </section>
+            <div>
+
+            </div>
+            <article class="prose prose-zinc max-w-none">
+                <Content/>
+            </article>
+        </div>
+    </main>
+</MySiteLayout>

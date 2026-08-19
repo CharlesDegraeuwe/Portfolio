@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://use.typekit.net/fus0igp.css");
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 
 .google-sans {
@@ -10,18 +12,29 @@
     font-variation-settings: "GRAD" 0;
 }
 
+
+.roboto-mono {
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
 @theme {
     --font-google-sans: "Google Sans", sans-serif;
+    --font-georgia: "georgia", sans-serif;
+    --font-roboto: "Roboto Mono", monospace;
 }
 
 
 body {
-    @apply font-google-sans overflow-hidden bg-amber-50/50 p-7 w-screen h-screen flex flex-col gap-5 min-w-0 min-h-0 flex-1;
+    @apply font-google-sans text-zinc-800 overflow-hidden bg-amber-50/30 p-7 w-screen h-screen flex flex-col gap-5 min-w-0 min-h-0 flex-1;
 
 }
 
 #header_container {
-    @apply w-full h-6 flex items-center justify-between
+    @apply w-full h-6 z-100 flex items-center justify-between
 }
 
 .header_burger_btn {
@@ -45,14 +58,14 @@ body {
 }
 
 .burger_menu {
-    @apply fixed inset-0 z-20 invisible text-white;
+    @apply fixed inset-0 z-20 text-white;
     pointer-events: none;
 }
 
 /* expanding circle, origin at the burger button */
 .burger_menu::before {
     content: "";
-    @apply absolute rounded-full bg-black;
+    @apply absolute rounded-full bg-zinc-950;
     top: 40px;
     left: 40px;
     width: 300vmax;
@@ -63,7 +76,6 @@ body {
 }
 
 .burger_active {
-    @apply visible;
     pointer-events: auto;
 }
 
@@ -74,8 +86,9 @@ body {
 .burger_menu_outer_container {
     @apply absolute inset-0 flex justify-center items-center;
 }
+
 .burger_menu_outer_container > div {
-    @apply max-w-1/2 w-full max-h-100 h-fit flex justify-between
+    @apply max-w-200 w-1/2 max-h-100 h-fit flex justify-between
 }
 
 .burger_menu_outer_container > div > div:first-child {
@@ -83,7 +96,7 @@ body {
 }
 
 .burger_menu_outer_container > div > div:first-child > a {
-    @apply hover:translate-x-2 transition-transform duration-200;
+    @apply hover:translate-x-2 transition-transform duration-200 font-georgia;
     font-size: 4rem;
     text-decoration: none;
 }
@@ -97,22 +110,28 @@ body {
 }
 
 .burger_menu_outer_container > div > div:last-child > span {
-    @apply opacity-50 text-xs tracking-wider mb-2;
+    @apply opacity-50 text-xs tracking-wider mb-2 font-roboto;
 }
 
 h1 {
+    @apply font-georgia;
     font-size: 4rem;
 }
 
+h2 {
+    font-size: 1.2rem;
+    opacity: 50%;
+    font-weight: 200;
+}
+
 h3 {
-    @apply tracking-wider uppercase font-medium;
+    @apply tracking-wider uppercase font-medium font-roboto;
     font-size: 0.75rem;
     opacity: 40%;
 }
 
 a {
     font-size: 1rem;
-    opacity: 50%;
 }
 
 .home_a {
@@ -139,21 +158,14 @@ a {
 }
 
 main {
-    @apply max-w-1/2 flex flex-row gap-10 h-full w-full;
-    animation: fade-in 1s;
-
+    @apply max-w-400 w-1/2 flex gap-10 h-full;
 }
 
 .main-page {
     @apply py-20;
 }
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 100;
-    }
+
+
+section {
+    @apply max-w-200 w-2/3;
 }
-
-
