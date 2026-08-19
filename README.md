@@ -1,55 +1,43 @@
-# Portfolio — Charles Degraeuwe
+# Astro Starter Kit: Minimal
 
-Personal portfolio website built with modern web technologies, focused on clean design, performance, and user experience.
-
-## Tech Stack
-Next.js (App Router)
-Tailwind CSS
-Bun (runtime & package manager)
-
-## Getting Started
-
-Install dependencies and start the development server:
-
-```
-bun install
-bun dev
+```sh
+pnpm create astro@latest -- --template minimal
 ```
 
-Open http://localhost:3000
-in your browser.
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## Development
+## 🚀 Project Structure
 
-Main entry point:
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
-app/page.tsx
-```
 
-The app uses Next.js App Router structure.
-Changes are reflected instantly during development.
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-## Styling
-Tailwind CSS for utility-first styling
-Focus on responsive design and clean UI
-Custom components and layout system
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-## Performance
-Optimized fonts using next/font
-Fast builds and dev environment powered by Bun
-Lightweight and minimal dependencies
+Any static assets, like images, can be placed in the `public/` directory.
 
-## Deployment
+## 🧞 Commands
 
-Recommended: deploy via Vercel
+All commands are run from the root of the project, from a terminal:
 
-bun run build
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `pnpm install`             | Installs dependencies                            |
+| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
+| `pnpm build`           | Build your production site to `./dist/`          |
+| `pnpm preview`         | Preview your build locally, before deploying     |
+| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `pnpm astro -- --help` | Get help using the Astro CLI                     |
 
-Or connect the repository directly to Vercel for automatic deployments.
+## 👀 Want to learn more?
 
-## Resources
-https://nextjs.org/docs
-
-<i>Feel free to reach out or check out my work through this portfolio.
-</br>
-[mail me](mailto:charles.degraeuwe@icloud.com)
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
