@@ -1,0 +1,16 @@
+---
+import Header from "../components/header/Header.tsx";
+import '../styles/global.css';
+---
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body class="min-w-screen min-h-screen flex">
+        <Header client:load/>
+        <div class="min-w-0 flex-1 min-h-0 flex items-center justify-center">
+            <slot/>
+        </div>
+    </body>
+</html>

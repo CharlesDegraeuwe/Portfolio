@@ -1,12 +1,27 @@
-export default function BurgerButton() {
+import {type SetStateAction, useState} from "react";
+
+interface BurgerButtonProps {
+    isOpen: boolean;
+    setIsOpen: React.Dispatch<SetStateAction<boolean>>;
+}
+
+const BurgerButton: React.FC<BurgerButtonProps> = (props) => {
+    const {isOpen, setIsOpen} = props;
     const handleClick = () => {
-        console.log("burger clicked");
+        setIsOpen(prev => !prev);
     };
 
     return (
-        <button onClick={handleClick} id="header_burger_btn">
-            <div />
-            <div />
+        <button
+            aria-description={"burger-trigger-button"}
+            type={"button"}
+            onClick={handleClick}
+            className={`header_burger_btn ${isOpen ? "active" : ""}`}
+        >
+            <div/>
+            <div/>
         </button>
     );
 }
+
+export default BurgerButton;

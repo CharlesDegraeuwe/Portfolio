@@ -1,26 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 @import "tailwindcss";
 
+
+.google-sans {
+    font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+}
+
+@theme {
+    --font-google-sans: "Google Sans", sans-serif;
+}
+
+
 body {
-    @apply bg-amber-50/50 p-7 w-full h-full flex flex-col gap-5;
+    @apply font-google-sans overflow-hidden bg-amber-50/50 p-7 w-screen h-screen flex flex-col gap-5 min-w-0 min-h-0 flex-1;
 
 }
 
 #header_container {
-    @apply w-full h-10 flex items-center justify-between
+    @apply w-full h-6 flex items-center justify-between
 }
 
-#header_burger_btn {
-    @apply relative flex justify-center items-center h-8 w-8 max-w-10 cursor-pointer gap-1 flex-col;
+.header_burger_btn {
+    @apply relative z-50 flex h-6 w-6 max-w-6 cursor-pointer items-center justify-center;
 }
 
-#header_burger_btn > div {
-    @apply max-h-0.5 rounded-3xl h-full w-full bg-zinc-900 transition-transform duration-300
+.header_burger_btn > div {
+    @apply absolute h-px w-full rounded-3xl bg-zinc-900 transition-all duration-500;
+}
+
+.header_burger_btn > div:first-child {
+    @apply mb-4;
+}
+
+.active > div:first-child {
+    @apply rotate-45 mb-0 bg-white;
+}
+
+.active > div:last-child {
+    @apply -rotate-45 bg-white;
+}
+
+.burger_menu {
+    @apply fixed inset-0 z-20 invisible text-white;
+    pointer-events: none;
+}
+
+/* expanding circle, origin at the burger button */
+.burger_menu::before {
+    content: "";
+    @apply absolute rounded-full bg-black;
+    top: 40px;
+    left: 40px;
+    width: 300vmax;
+    height: 300vmax;
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    transition: transform 700ms ease;
+}
+
+.burger_active {
+    @apply visible;
+    pointer-events: auto;
+}
+
+.burger_active::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.burger_menu_outer_container {
+    @apply absolute inset-0 flex justify-center items-center;
+}
+.burger_menu_outer_container > div {
+    @apply max-w-1/2 w-full max-h-100 h-fit flex justify-between
+}
+
+.burger_menu_outer_container > div > div:first-child {
+    @apply flex flex-col justify-between relative;
+}
+
+.burger_menu_outer_container > div > div:first-child > a {
+    @apply hover:translate-x-2 transition-transform duration-200;
+    font-size: 4rem;
+    text-decoration: none;
+}
+
+.burger_menu_outer_container > div > div:last-child {
+    @apply flex flex-col items-end gap-3;
+}
+
+.burger_menu_outer_container > div > div:last-child > a {
+    @apply text-lg opacity-75 hover:opacity-100 transition-opacity duration-300;
+}
+
+.burger_menu_outer_container > div > div:last-child > span {
+    @apply opacity-50 text-xs tracking-wider mb-2;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h3 {
+    @apply tracking-wider uppercase font-medium;
+    font-size: 0.75rem;
+    opacity: 40%;
+}
+
+a {
+    font-size: 1rem;
+    opacity: 50%;
+}
+
+.home_a {
+    position: relative;
+    text-decoration: none;
+}
+
+.home_a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.home_a:hover::after {
+    transform: scaleX(1);
+}
+
+main {
+    @apply max-w-1/2 flex flex-row gap-10 h-full w-full;
+    animation: fade-in 1s;
+
+}
+
+.main-page {
+    @apply py-20;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
 }
 
 
-.active >div:first-child {
-    @apply rotate-45
-}
-.active >div:last-child {
-    @apply -rotate-45
-}
