@@ -5,12 +5,13 @@ interface Project {
     description: string;
     date: string;
     link: string;
+    index: number;
 }
 
 const WorkSection = ({projects}: {projects: Project[]}) => {
 
     return (<section className={"flex border-y border-zinc-200 flex-col divide-y divide-zinc-200 w-full"}>
-        {projects.map((section, index) => {
+        {projects.sort((A, B) => A.index - B.index).map((section, index) => {
             return (<a href={section.link} key={section.title + index}
                        className={"w-full h-fit py-6 md:py-10 group flex flex-row opacity-100 items-center gap-4 md:gap-10"}>
                 <span>{index + 1}</span>

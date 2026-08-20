@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 interface Heading {
     depth: number;
@@ -8,6 +8,7 @@ interface Heading {
 
 export default function TableOfContents({headings}: {headings: Heading[]}) {
     const [active, setActive] = useState('');
+    const lockUntil = useRef(0); // ignore scroll-based updates while a click-scroll settles
 
     useEffect(() => {
         const container = document.querySelector<HTMLElement>('.article-scroll');
@@ -20,7 +21,24 @@ export default function TableOfContents({headings}: {headings: Heading[]}) {
         const LINE = 120; // px from the top of the container = the "active" line
 
         const update = () => {
+            if (Date.now() < lockUntil.current) return; // click-scroll in progress
             const cTop = container.getBoundingClientRect().top;
+
+            // when scrolled to the very bottom, headings stacked below the line
+            // can never cross it -> highlight the last visible one instead.
+            const atBottom =
+                container.scrollHeight - container.scrollTop - container.clientHeight < 2;
+            if (atBottom) {
+                const visible = els.filter((el) => {
+                    const top = el.getBoundingClientRect().top - cTop;
+                    return top >= 0 && top <= container.clientHeight;
+                });
+                if (visible.length) {
+                    setActive(visible[visible.length - 1].id);
+                    return;
+                }
+            }
+
             let current = els[0]?.id ?? '';
             for (const el of els) {
                 const top = el.getBoundingClientRect().top - cTop;
@@ -47,6 +65,10 @@ export default function TableOfContents({headings}: {headings: Heading[]}) {
                     <a
                         key={h.slug}
                         href={`#${h.slug}`}
+                        onClick={() => {
+                            lockUntil.current = Date.now() + 700;
+                            setActive(h.slug);
+                        }}
                         style={{paddingLeft: (h.depth - 1) * 12 + 12}}
                         className={`text-sm px-2 border-l-[1.5px] truncate transition-opacity duration-300 ${
                             active === h.slug
