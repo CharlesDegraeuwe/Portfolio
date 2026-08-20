@@ -1,8 +1,10 @@
 ---
 import {getCollection, render} from 'astro:content';
-import MySiteLayout from '../../layouts/MySiteLayout.astro';
+import RootLayout from "../../layouts/RootLayout.astro";
 import ArrowLeft from '@lucide/astro/icons/arrow-left';
 import TableOfContents from '../../components/work/TableOfContents';
+import AnimateOnMount from "../../components/layout/header/AnimateOnMount.tsx";
+import SitePreview from "../../components/work/SitePreview.astro";
 
 export async function getStaticPaths() {
     const projects = await getCollection('work');
@@ -16,33 +18,45 @@ const {project} = Astro.props;
 const {Content, headings} = await render(project);   // markdown-body -> component
 ---
 
-<MySiteLayout title={project.data.title} description={project.data.description}>
+<RootLayout title={project.data.title} description={project.data.description}>
     <main class="main-page article-scroll w-full max-w-none h-full overflow-y-auto flex scroll-hidden">
         <div class="w-full max-w-240 flex gap-12 items-start justify-start scroll-hidden">
             <div class="min-w-0 flex-1 flex flex-col gap-8 scroll-hidden">
-                <a href="/work"
-                   class="home_a flex items-center gap-2 text-sm opacity-60 hover:opacity-100 w-fit">
-                    <ArrowLeft size={14}/>
-                    Back to work
-                </a>
+                <AnimateOnMount client:load delay={0}>
+                    <a href="/work"
+                       class="home_a flex items-center gap-2 text-sm opacity-60 hover:opacity-100 w-fit">
+                        <ArrowLeft size={14}/>
+                        Back to work
+                    </a>
+                </AnimateOnMount>
 
-                <section class="flex flex-col gap-1">
-                    <h3 class="text-2xl">{project.data.date}</h3>
-                    <h1>{project.data.title}</h1>
-                    <div class="flex flex-row gap-1 mb-5">{(project.data.tags ?? []).map((tag, index) => {
-                        return(<div class="px-2 bg-amber-50 py-0.5 rounded-4xl border text-sm border-zinc-200">
-                            {tag}
-                        </div>)
-                    })}</div>
-                    <hr class="max-w-1/8 border-zinc-300"/>
-                </section>
+                <AnimateOnMount client:load delay={100}>
+                    <section class="flex flex-col gap-1">
+                        <h3 class="text-2xl">{project.data.date}</h3>
+                        <h1>{project.data.title}</h1>
+                        <div class="flex flex-row gap-1 mb-5">{(project.data.tags ?? []).map((tag, index) => {
+                            return(<div class="px-2 bg-amber-50 py-0.5 rounded-4xl border text-sm border-zinc-200">
+                                {tag}
+                            </div>)
+                        })}</div>
+                        <hr class="max-w-1/8 border-zinc-300"/>
+                    </section>
+                </AnimateOnMount>
 
-                <article class="prose prose-zinc max-w-none">
-                    <Content/>
-                </article>
+                {project.data.preview && (
+                    <AnimateOnMount client:load delay={150}>
+                        <SitePreview link={project.data.preview} title={project.data.title}/>
+                    </AnimateOnMount>
+                )}
+
+                <AnimateOnMount client:load delay={200}>
+                    <article class="prose prose-zinc max-w-none">
+                        <Content/>
+                    </article>
+                </AnimateOnMount>
                 <TableOfContents client:load headings={headings}/>
             </div>
 
         </div>
     </main>
-</MySiteLayout>
+</RootLayout>

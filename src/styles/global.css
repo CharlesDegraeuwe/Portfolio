@@ -3,7 +3,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-
 .google-sans {
     font-family: "Google Sans", sans-serif;
     font-optical-sizing: auto;
@@ -30,7 +29,12 @@
 
 body {
     @apply font-google-sans text-zinc-800 overflow-hidden bg-amber-50/30 p-7 max-md:p-4 w-screen h-screen flex flex-col gap-5 min-w-0 min-h-0 flex-1;
+    user-select: none;
 
+}
+::selection {
+    color: white;
+    background-color:  var(--color-zinc-800);
 }
 
 #header_container {

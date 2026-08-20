@@ -5,6 +5,8 @@ date: "2026 to Present"
 link: "/work/slender-scanner"
 tags: ["NextJS", "Kotlin", "Astro", "Fastify"]
 index: 3
+preview: ""
+type: "project"
 ---
 
 ![Overview of the slenderscanner loginpage](/work/slenderscanner.png "login page")

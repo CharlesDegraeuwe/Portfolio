@@ -8,9 +8,15 @@ const work = defineCollection({
         description: z.string(),
         date: z.string(),
         link: z.string(),
+        preview: z.string().optional(),
         tags: z.string().array(),
-        index: z.number()
+        index: z.number(),
+        type: z.string(),
     }),
 });
 
-export const collections = {work};
+const about = defineCollection({
+    loader: glob({pattern: '**/*.md', base: './src/content/about'}),
+});
+
+export const collections = {work, about};

@@ -1,0 +1,93 @@
+---
+import ContributionGrid from "../../components/about/ContributionGrid";
+import {getEntry, render} from "astro:content";
+import RootLayout from "../../layouts/RootLayout.astro";
+import EductionTimeLine from "../../components/about/EductionTimeLine.tsx";
+import Title from "../../components/layout/title/title.astro";
+import Camera from "@lucide/astro/icons/camera";
+import Handshake from "@lucide/astro/icons/handshake";
+import GitBranch from "@lucide/astro/icons/git-branch";
+import AnimateOnMount from "../../components/layout/header/AnimateOnMount.tsx";
+
+const username = "CharlesDegraeuwe";
+
+const query = `
+  query($username: String!) {
+    user(login: $username) {
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+          weeks {
+            contributionDays {
+              date
+              contributionCount
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const response = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
+    },
+    body: JSON.stringify({
+        query,
+        variables: {username},
+    }),
+});
+
+const json = await response.json();
+if (json.errors) {
+    console.error("GitHub API error:", json.errors);
+}
+const calendar = json.data?.user?.contributionsCollection?.contributionCalendar;
+
+const introduction = await getEntry('about', 'introduction')
+if (!introduction) throw new Error("Missing 'about/introduction' content entry");
+const {Content: Introduction} = await render(introduction);
+---
+<RootLayout title="About">
+    <main class="main-page article-scroll w-full max-w-none h-full overflow-y-auto flex flex-col gap-5 scroll-hidden">
+        <AnimateOnMount client:load delay={0}>
+            <Title title="About" subtitle="Background & Info"/>
+        </AnimateOnMount>
+        <AnimateOnMount client:load delay={100}>
+            <section class="flex flex-col gap-5">
+                <Introduction/>
+            </section>
+        </AnimateOnMount>
+        <AnimateOnMount client:load delay={200}>
+            <ContributionGrid client:load calendar={calendar}/>
+        </AnimateOnMount>
+        <AnimateOnMount client:load delay={300}>
+            <h2>Education</h2>
+            <EductionTimeLine client:load/>
+        </AnimateOnMount>
+        <AnimateOnMount client:load delay={400}>
+            <h2>Contact</h2>
+            <section class="flex flex-col gap-2 ">
+                <p>Currently open to internships, freelance work and interesting collaborations.</p>
+                <p>A few other places to find me online:</p>
+                <div class="text-zinc-400 flex flex-col gap-2">
+                    <div class="flex flex-row gap-2 items-center">
+                        <Camera size={18}/>
+                        <a href="https://instagram.com/charles.dgrw" class="home_a max-w-fit">Instagram</a>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <Handshake size={18}/>
+                        <a href="https://instagram.com/charles.dgrw" class="home_a max-w-fit">LinkedIn</a>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <GitBranch size={18}/>
+                        <a href="https://instagram.com/charles.dgrw" class="home_a max-w-fit">GitHub</a>
+                    </div>
+                </div>
+            </section>
+        </AnimateOnMount>
+    </main>
+</RootLayout>

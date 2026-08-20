@@ -1,0 +1,51 @@
+---
+import { Maximize2, Minus, XIcon } from "@lucide/astro";
+import ArrowUpRight from "@lucide/astro/icons/arrow-up-right";
+
+interface Props {
+    link: string;
+    title: string;
+}
+
+const { link, title } = Astro.props;
+let host = link;
+try {
+    host = new URL(link).host;
+} catch {
+    // leave raw link if it isn't a valid URL
+}
+---
+<a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="group block w-full max-w-200 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-lg no-underline"
+>
+    <div class="flex items-center gap-2 border-b border-zinc-200 bg-zinc-50 px-4 py-2.5">
+        <span class="h-3 w-3 rounded-full bg-red-400/80"/>
+        <span class="h-3 w-3 rounded-full bg-amber-400/80"/>
+        <span class="h-3 w-3 rounded-full bg-green-400/80"/>
+        <div class="mx-auto flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs text-zinc-400 border border-zinc-200">
+            {host}
+        </div>
+        <ArrowUpRight
+            size={16}
+            class="text-zinc-400 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        />
+    </div>
+
+    <!-- live site, scaled down to show the desktop layout -->
+    <div class="relative aspect-[16/10] w-full overflow-hidden bg-zinc-50">
+        <iframe
+            src={link}
+            title={`Live preview of ${title}`}
+            loading="lazy"
+            scrolling="no"
+            tabindex="-1"
+            class="pointer-events-none absolute left-0 top-0 origin-top-left"
+            style="width: 200%; height: 200%; transform: scale(0.5); border: 0;"
+        ></iframe>
+        <!-- overlay: keeps the whole card clickable + hover affordance -->
+        <div class="absolute inset-0 bg-zinc-900/0 transition-colors duration-200 group-hover:bg-zinc-900/5"></div>
+    </div>
+</a>

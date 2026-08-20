@@ -3,10 +3,11 @@ title: "Jurimesh"
 description: "AI-powered due diligence for legal teams."
 date: "2026 to Present"
 link: "/work/jurimesh"
+preview: "https://www.jurimesh.com"
 tags: ["React", "Fastify", "Rust workers"]
 index: 2
+type: "freelance"
 ---
-![Overview of the jurimesh landingpage](/work/jurimesh.png "landing page")
 
 ## Overview
 
