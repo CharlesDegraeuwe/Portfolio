@@ -11,7 +11,7 @@ const work = defineCollection({
         preview: z.string().optional(),
         tags: z.string().array(),
         index: z.number(),
-        type: z.string(),
+        types: z.string().array().optional(),
     }),
 });
 

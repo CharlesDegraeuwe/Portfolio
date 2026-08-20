@@ -2,9 +2,9 @@
 import {getCollection, render} from 'astro:content';
 import RootLayout from "../../layouts/RootLayout.astro";
 import ArrowLeft from '@lucide/astro/icons/arrow-left';
-import TableOfContents from '../../components/work/TableOfContents';
-import AnimateOnMount from "../../components/layout/header/AnimateOnMount.tsx";
-import SitePreview from "../../components/work/SitePreview.astro";
+import TableOfContents from '../../components/page_components/work/TableOfContents';
+import AnimateOnMount from "../../components/page_components/layout/header/AnimateOnMount.tsx";
+import SitePreview from "../../components/page_components/work/SitePreview.astro";
 
 export async function getStaticPaths() {
     const projects = await getCollection('work');
@@ -16,9 +16,24 @@ export async function getStaticPaths() {
 
 const {project} = Astro.props;
 const {Content, headings} = await render(project);   // markdown-body -> component
+
+const siteUrl = (Astro.site ?? Astro.url).origin;
+const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.data.title,
+    description: project.data.description,
+    url: canonicalFor(),
+    author: { "@id": `${siteUrl}/#person` },
+    keywords: (project.data.tags ?? []).join(", "),
+    ...(project.data.preview ? { sameAs: project.data.preview } : {}),
+};
+function canonicalFor() {
+    return new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+}
 ---
 
-<RootLayout title={project.data.title} description={project.data.description}>
+<RootLayout title={project.data.title} description={project.data.description} schema={projectSchema}>
     <main class="main-page article-scroll w-full max-w-none h-full overflow-y-auto flex scroll-hidden">
         <div class="w-full max-w-240 flex gap-12 items-start justify-start scroll-hidden">
             <div class="min-w-0 flex-1 flex flex-col gap-8 scroll-hidden">

@@ -6,7 +6,7 @@ link: "/work/slender-scanner"
 tags: ["NextJS", "Kotlin", "Astro", "Fastify"]
 index: 3
 preview: ""
-type: "project"
+types: ["project", "w.i.p."]
 ---
 
 ![Overview of the slenderscanner loginpage](/work/slenderscanner.png "login page")
@@ -38,3 +38,14 @@ The mobile app is where warehouse staff scan items and place orders, the admin d
 * Swagger
 * Fastify MCP
 * PostgreSQL
+
+## Gained Skills
+
+*\*Slender Scanner was largely about applying what I'd learned on Studo and Jurimesh to a new domain. The genuinely new ground for me was:*
+
+* Designing multi-tenant architecture with per-tenant isolation
+* OAuth 2.0 & admin consent flows (Microsoft Entra ID)
+* Secure per-tenant token storage & refresh handling
+* Integrating with third-party ERP APIs (Dynamics 365 Business Central)
+* Native Android development (Kotlin, Jetpack Compose)
+* Hardware barcode/camera scanning integration (Zebra, CameraX)

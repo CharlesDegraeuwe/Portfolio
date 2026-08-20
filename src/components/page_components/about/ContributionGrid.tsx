@@ -1,5 +1,7 @@
-import classNames from "../../util/classNames";
+import classNames from "../../../util/classNames.ts";
 import {GitPullRequestArrow} from "lucide-react";
+import TooltipProps from "../../design_system/Tooltip/Tooltip.tsx";
+import Tooltip from "../../design_system/Tooltip/Tooltip.tsx";
 
 type ContributionCalendar = {
     totalContributions: number;
@@ -34,14 +36,15 @@ const ContributionGrid: React.FC<ContributionGridProps> = (props) => {
         <div className={"w-full min-h-fit grid-cols-27 border border-zinc-300 rounded-2xl p-3 gap-1.5 md:gap-2 grid bg-white shadow-lg"}>
             {calendar?.weeks.slice(26, calendar?.weeks.length).map((week, index) => (
                 <div key={index} className={"min-w-0 min-h-0 w-full h-full flex-1 flex flex-col gap-1.5 md:gap-2"}>
-                    {week.contributionDays.map((day) => (<
+                    {week.contributionDays.map((day) => (
+                        <Tooltip content={day.contributionCount.toString() + " contributions on " + new Date(day.date).toLocaleDateString('nl').split("-").join("/")}><
                         div
                             key={day.date}
-                            title={day.contributionCount.toString() + " contributions on " + new Date(day.date).toLocaleDateString('nl').split("-").join("/")}
                             style={{
                                 background: calcColor(day.contributionCount)
                             }}
-                        className={classNames('w-full aspect-square rounded-sm')}/>
+                        className={classNames('w-full aspect-square cursor-pointer rounded-sm')}/>
+                        </Tooltip>
                     ))}
                 </div>
             ))}

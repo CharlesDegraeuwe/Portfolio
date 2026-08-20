@@ -1,24 +1,62 @@
 ---
-import Header from "../components/layout/header/Header.tsx";
+import Header from "../components/page_components/layout/header/Header.tsx";
 import '../styles/global.css';
-import Footer from "../components/layout/footer/Footer.tsx";
+import Footer from "../components/page_components/layout/footer/Footer.tsx";
 
 interface Props {
     title: string;
     description?: string;
     image?: string;
+    schema?: object;
+    noindex?: boolean;
 }
 
 const {
     title,
     description = "Charles Degraeuwe - student full stack engineer and founder of Studo. Selected products and tools I've designed and built.",
     image = "/pfp.jpg",
+    schema,
+    noindex = false,
 } = Astro.props;
 
 const siteName = "Charles Degraeuwe";
 const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 const ogImage = new URL(image, Astro.site ?? Astro.url).href;
+const siteUrl = (Astro.site ?? Astro.url).origin;
+
+const baseSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Person",
+            "@id": `${siteUrl}/#person`,
+            name: siteName,
+            url: siteUrl,
+            image: new URL("/pfp.jpg", siteUrl).href,
+            jobTitle: "Full-stack engineer",
+            description:
+                "Student full-stack engineer and founder of Studo.",
+            alumniOf: {
+                "@type": "CollegeOrUniversity",
+                name: "HOGENT",
+            },
+            sameAs: [
+                "https://github.com/CharlesDegraeuwe",
+                "https://www.studo.study",
+                "https://www.instagram.com/charles.dgrw/",
+            ],
+        },
+        {
+            "@type": "WebSite",
+            "@id": `${siteUrl}/#website`,
+            url: siteUrl,
+            name: siteName,
+            description,
+            publisher: { "@id": `${siteUrl}/#person` },
+        },
+    ],
+};
 ---
 <html lang="en">
     <head>
@@ -28,6 +66,7 @@ const ogImage = new URL(image, Astro.site ?? Astro.url).href;
         <title>{fullTitle}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
+        {noindex && <meta name="robots" content="noindex, follow" />}
 
         <!-- Open Graph -->
         <meta property="og:type" content="website" />
@@ -48,6 +87,9 @@ const ogImage = new URL(image, Astro.site ?? Astro.url).href;
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+
+        <script type="application/ld+json" set:html={JSON.stringify(baseSchema)} />
+        {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
     </head>
     <body class="min-w-screen min-h-screen flex">
         <Header client:load/>

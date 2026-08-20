@@ -1,5 +1,5 @@
 ---
-import classNames from "../../../util/classNames.ts";
+import classNames from "../../../../util/classNames.ts";
 interface Props {
     title: string;
     subtitle?: string;
@@ -14,7 +14,7 @@ const {
 } = Astro.props;
 ---
 <section class={classNames("pb-10", !noBorder && "border-b border-zinc-200 ")}>
-    <h3>{subtitle}</h3>
+    {subtitle && <p class="tracking-wider uppercase font-medium font-roboto text-xs opacity-40">{subtitle}</p>}
     <h1>{title}</h1>
-    <h2>{description}</h2>
+    {description && <p class="text-[1.2rem] font-extralight opacity-50">{description}</p>}
 </section>

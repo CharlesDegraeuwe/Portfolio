@@ -6,7 +6,7 @@ link: "/work/studo"
 tags: ["NextJS", "NestJS", "Rust", "Astro", "Postgres"]
 index: 1
 preview: "https://beta.studo.study/en/welcome"
-type: "project"
+types: ["project", "w.i.p."]
 ---
 
 
@@ -71,6 +71,23 @@ I own the product end-to-end: architecture, backend, frontend, design and infras
 * Devin
 * Docker
 * Docker Compose
+
+## Gained Skills
+
+Studo is where most of my growth actually happened. Owning it end-to-end forced me to learn a bit of everything from scratch:
+
+* End-to-end product ownership (architecture, backend, frontend, infra)
+* Managing a huge codebase
+* Working in a monorepo
+* Document parsing
+* LLM integration and prompt engineering
+* Designing async, distributed pipelines (Rust workers + Redis streams)
+* Vector search & semantic retrieval (pgvector)
+* Setting up CI/CD with tag-based production deploys
+* Caching, rate limiting & application security
+* Data modeling for complex domains
+* Payments & subscription billing integration
+* Cross-platform mobile development (Full stack Node)
 
 ## Links
 

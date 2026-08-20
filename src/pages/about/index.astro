@@ -1,13 +1,13 @@
 ---
-import ContributionGrid from "../../components/about/ContributionGrid";
+import ContributionGrid from "../../components/page_components/about/ContributionGrid";
 import {getEntry, render} from "astro:content";
 import RootLayout from "../../layouts/RootLayout.astro";
-import EductionTimeLine from "../../components/about/EductionTimeLine.tsx";
-import Title from "../../components/layout/title/title.astro";
+import EductionTimeLine from "../../components/page_components/about/EductionTimeLine.tsx";
+import Title from "../../components/page_components/layout/title/title.astro";
 import Camera from "@lucide/astro/icons/camera";
 import Handshake from "@lucide/astro/icons/handshake";
 import GitBranch from "@lucide/astro/icons/git-branch";
-import AnimateOnMount from "../../components/layout/header/AnimateOnMount.tsx";
+import AnimateOnMount from "../../components/page_components/layout/header/AnimateOnMount.tsx";
 
 const username = "CharlesDegraeuwe";
 
@@ -51,7 +51,7 @@ const introduction = await getEntry('about', 'introduction')
 if (!introduction) throw new Error("Missing 'about/introduction' content entry");
 const {Content: Introduction} = await render(introduction);
 ---
-<RootLayout title="About">
+<RootLayout title="About" description="About Charles Degraeuwe — full-stack engineering student, founder of Studo, with a background in design and videography. Education, GitHub activity and contact.">
     <main class="main-page article-scroll w-full max-w-none h-full overflow-y-auto flex flex-col gap-5 scroll-hidden">
         <AnimateOnMount client:load delay={0}>
             <Title title="About" subtitle="Background & Info"/>
@@ -76,15 +76,15 @@ const {Content: Introduction} = await render(introduction);
                 <div class="text-zinc-400 flex flex-col gap-2">
                     <div class="flex flex-row gap-2 items-center">
                         <Camera size={18}/>
-                        <a href="https://instagram.com/charles.dgrw" class="home_a max-w-fit">Instagram</a>
+                        <a href="https://instagram.com/charles.dgrw" target="_blank" class="home_a max-w-fit">Instagram</a>
                     </div>
                     <div class="flex flex-row gap-2 items-center">
                         <Handshake size={18}/>
-                        <a href="https://instagram.com/charles.dgrw" class="home_a max-w-fit">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/charles-degraeuwe-6293a1333/" target="_blank" class="home_a max-w-fit">LinkedIn</a>
                     </div>
                     <div class="flex flex-row gap-2 items-center">
                         <GitBranch size={18}/>
-                        <a href="https://instagram.com/charles.dgrw" class="home_a max-w-fit">GitHub</a>
+                        <a href="https://github.com/CharlesDegraeuwe" target="_blank" class="home_a max-w-fit">GitHub</a>
                     </div>
                 </div>
             </section>

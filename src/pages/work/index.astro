@@ -1,9 +1,9 @@
 ---
 import {getCollection} from 'astro:content';
 import RootLayout from "../../layouts/RootLayout.astro";
-import WorkSection from '../../components/work/WorkSection';
-import Title from "../../components/layout/title/title.astro";
-import AnimateOnMount from "../../components/layout/header/AnimateOnMount.tsx";
+import WorkSection from '../../components/page_components/work/WorkSection';
+import Title from "../../components/page_components/layout/title/title.astro";
+import AnimateOnMount from "../../components/page_components/layout/header/AnimateOnMount.tsx";
 
 const projects = (await getCollection('work')).map((entry) => entry.data);
 ---

@@ -1,4 +1,4 @@
-import classNames from "../../util/classNames";
+import classNames from "../../../util/classNames.ts";
 
 //TODO vervangen door md file voor template
 const OPLEIDING = [

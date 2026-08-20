@@ -1,5 +1,5 @@
 import {ArrowRight} from "lucide-react";
-import classNames from "../../util/classNames";
+import classNames from "../../../util/classNames.ts";
 import AnimateOnMount from "../layout/header/AnimateOnMount.tsx";
 
 interface Project {
@@ -9,7 +9,7 @@ interface Project {
     link: string;
     index: number;
     tags?: string[];
-    type: string
+    types: string[];
 }
 
 const WorkSection = ({projects}: { projects: Project[] }) => {
@@ -28,8 +28,12 @@ const WorkSection = ({projects}: { projects: Project[] }) => {
                                 <div className={"flex flex-col gap-1 min-w-0 flex-1"}>
                                     <div className={"flex flex-row items-center gap-3"}>
                                         <span className={"font-georgia text-xl md:text-3xl"}>{section.title}</span>
-                                        <div
-                                            className={classNames("px-2.5 capitalize text-[13px] rounded-full py-px shadow-sm font-medium", section.type === "project" ? "bg-amber-200/75 text-amber-700 " : "bg-blue-200 text-blue-700")}>{section.type}</div>
+                                        {section.types.map(type => (
+                                            <span
+                                                className={classNames("px-2.5 capitalize text-[13px] rounded-full py-px shadow-sm font-medium", type === "project" ? "bg-amber-200/75 text-amber-700 " : type === "w.i.p." ? "bg-emerald-200 text-emerald-700" :  "bg-blue-200 text-blue-700")}>
+                                                {type}
+                                        </span>
+                                        ))}
                                     </div>
                                     <p className={"font-roboto opacity-50 text-xs md:text-sm"}>{section.description}</p>
                                 </div>
