@@ -8,6 +8,8 @@ const work = defineCollection({
         description: z.string(),
         date: z.string(),
         link: z.string(),
+        tags: z.string().array(),
+        index: z.number()
     }),
 });
 
