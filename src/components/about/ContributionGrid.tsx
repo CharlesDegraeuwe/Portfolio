@@ -24,11 +24,14 @@ interface ContributionGridProps {
 const ContributionGrid: React.FC<ContributionGridProps> = (props) => {
     const {calendar} = props;
     console.log(calendar)
-    return (<div className={"flex flex-col gap-3 opacity-75 mb-5"}>
-        <label className={"flex flex-row gap-2 items-center"}>
-            <GitPullRequestArrow size={15}/>
-            <span><a href="https://github.com/CharlesDegraeuwe" target={"_blank"} className={"hover:underline"}>My GitHub</a> Activity:</span>
+    return (<div className={"relative max-w-fit flex flex-col gap-3 opacity-75 mb-5"}>
+        <div className={"flex flex-row items-center justify-between"}>
+            <label className={"flex flex-row gap-2 items-center"}>
+                <GitPullRequestArrow size={15}/>
+                <span><a href="https://github.com/CharlesDegraeuwe" target={"_blank"} className={"hover:underline"}>My GitHub</a> Activity:</span>
             </label>
+            <span className={"font-medium text-sm text-zinc-400"}>{calendar?.totalContributions} total contributions</span>
+        </div>
         <div className={"w-full max-w-fit min-h-fit grid-cols-27 border border-zinc-300 rounded-2xl p-3 gap-2 grid bg-white shadow-lg"}>
             {calendar?.weeks.slice(26, calendar?.weeks.length).map((week, index) => (
                 <div key={index} className={"min-w-0 min-h-0 w-full h-full flex-1 flex flex-col gap-2"}>

@@ -5,10 +5,10 @@ date: "2025 to Present"
 link: "/work/studo"
 tags: ["NextJS", "NestJS", "Rust", "Astro", "Postgres"]
 index: 1
+preview: "https://beta.studo.study/en/welcome"
 type: "project"
 ---
 
-![Overview of the studo homepage](/work/studo.png "Studo homepage")
 
 ## Overview
 Studo is a full-stack study platform I've been building since mid-2025, aimed at making studying more interactive and efficient than traditional flashcard or notes apps. The core idea is to let students upload their own study material: PDFs, lecture slides, notes and turn that content into structured, learnable formats automatically, rather than requiring manual flashcard creation.

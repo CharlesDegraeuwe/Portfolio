@@ -28,7 +28,7 @@ const OPLEIDING = [
 ]
 const EductionTimeLine = () => {
     return(
-        <div className={"flex ml-10 py-5 h-fit flex-col gap-15 border-l border-zinc-300"}>
+        <div className={"flex ml-10 mb-10 py-5 h-fit flex-col gap-15 border-l border-zinc-300"}>
             {OPLEIDING.map(item => (
                 <div className={'flex flex-col px-10 relative gap-3'}>
                     <div className={'justify-center flex flex-col h-fit gap-3'}>

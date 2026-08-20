@@ -8,8 +8,10 @@ const work = defineCollection({
         description: z.string(),
         date: z.string(),
         link: z.string(),
+        preview: z.string().optional(),
         tags: z.string().array(),
-        index: z.number()
+        index: z.number(),
+        type: z.string(),
     }),
 });
 
