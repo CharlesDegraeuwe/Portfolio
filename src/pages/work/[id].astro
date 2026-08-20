@@ -7,7 +7,7 @@ import TableOfContents from '../../components/work/TableOfContents';
 export async function getStaticPaths() {
     const projects = await getCollection('work');
     return projects.map((project) => ({
-        params: {id: project.id},   // studo, jurimesh, ...
+        params: {id: project.id},
         props: {project},
     }));
 }
@@ -15,6 +15,7 @@ export async function getStaticPaths() {
 const {project} = Astro.props;
 const {Content, headings} = await render(project);   // markdown-body -> component
 ---
+
 <MySiteLayout title={project.data.title} description={project.data.description}>
     <main class="main-page article-scroll w-full max-w-none h-full overflow-y-auto flex scroll-hidden">
         <div class="w-full max-w-240 flex gap-12 items-start justify-start scroll-hidden">
@@ -28,8 +29,8 @@ const {Content, headings} = await render(project);   // markdown-body -> compone
                 <section class="flex flex-col gap-1">
                     <h3 class="text-2xl">{project.data.date}</h3>
                     <h1>{project.data.title}</h1>
-                    <div class="flex flex-row gap-1 mb-5">{project.data.tags.map((tag, index) => {
-                        return(<div class="px-2 bg-amber-50 py-O.5 rounded-4xl border text-sm border-zinc-200">
+                    <div class="flex flex-row gap-1 mb-5">{(project.data.tags ?? []).map((tag, index) => {
+                        return(<div class="px-2 bg-amber-50 py-0.5 rounded-4xl border text-sm border-zinc-200">
                             {tag}
                         </div>)
                     })}</div>
