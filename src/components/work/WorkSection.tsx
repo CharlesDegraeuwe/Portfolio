@@ -6,12 +6,15 @@ interface Project {
     date: string;
     link: string;
     index: number;
+    tags?: string[];
 }
 
 const WorkSection = ({projects}: {projects: Project[]}) => {
 
+    const sorted = [...projects].sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
+
     return (<section className={"flex border-y border-zinc-200 flex-col divide-y divide-zinc-200 w-full"}>
-        {projects.sort((A, B) => A.index - B.index).map((section, index) => {
+        {sorted.map((section, index) => {
             return (<a href={section.link} key={section.title + index}
                        className={"w-full h-fit py-6 md:py-10 group flex flex-row opacity-100 items-center gap-4 md:gap-10"}>
                 <span>{index + 1}</span>
