@@ -35,17 +35,17 @@ const BurgerMenu: React.FC<BurgerMenuProps> = (props) => {
                         FIND ME ELSEWHERE
                           </AnimateOnMount>
                     </span>
-                    <a href="" className={"home_a"} >
+                    <a href="https://www.instagram.com/charles.dgrw/" className={"home_a"} >
                         <AnimateOnMount show={isOpen} delay={650}>
                             Instagram
                         </AnimateOnMount>
                     </a>
-                    <a href="" className={"home_a"}>
+                    <a href="https://www.linkedin.com/in/charles-degraeuwe-6293a1333/" className={"home_a"}>
                         <AnimateOnMount show={isOpen} delay={750}>
                             LinkedIn
                         </AnimateOnMount>
                     </a>
-                    <a href="" className={"home_a"}>
+                    <a href="https://github.com/CharlesDegraeuwe" className={"home_a"}>
                         <AnimateOnMount show={isOpen} delay={850}>
                             GitHub
                         </AnimateOnMount>

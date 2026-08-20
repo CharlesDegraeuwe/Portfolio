@@ -165,7 +165,87 @@ main {
     @apply py-20;
 }
 
+/* article scroll container + anchor offset for the TOC links */
+.article-scroll {
+    scroll-behavior: smooth;
+}
 
-section {
+.article-scroll :is(h1, h2, h3) {
+    scroll-margin-top: 1.5rem;
+}
+
+.scroll-hidden {
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+section, article {
     @apply max-w-200 w-2/3;
 }
+
+/* article body (markdown -> prose) */
+.prose {
+    @apply text-zinc-700 leading-relaxed;
+}
+
+.prose :is(h2, h3, h4) {
+    @apply font-georgia text-zinc-900;
+}
+
+.prose h2 {
+    @apply text-3xl mt-12 mb-4;
+}
+
+.prose h3 {
+    @apply text-xl mt-8 mb-3;
+}
+
+.prose p {
+    @apply my-4;
+}
+
+.prose a {
+    @apply text-zinc-900 underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-900 transition-colors;
+}
+
+.prose ul {
+    @apply list-disc pl-5 my-4 marker:text-zinc-400;
+}
+
+.prose ol {
+    @apply list-decimal pl-5 my-4 marker:text-zinc-400;
+}
+
+.prose li {
+    @apply my-1;
+}
+
+.prose blockquote {
+    @apply border-l-2 border-zinc-300 pl-4 italic text-zinc-500 my-6;
+}
+
+.prose code {
+    @apply font-roboto text-sm bg-zinc-100 rounded px-1.5 py-0.5;
+}
+
+.prose pre {
+    @apply font-roboto text-sm bg-zinc-950 text-zinc-100 rounded-xl p-4 my-6 overflow-x-auto;
+}
+
+.prose pre code {
+    @apply bg-transparent p-0;
+}
+
+.prose img {
+    @apply rounded-xl my-6 border border-zinc-200;
+}
+
+.prose hr {
+    @apply border-zinc-200 my-10;
+}
+
