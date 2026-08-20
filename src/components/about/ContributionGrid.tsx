@@ -1,4 +1,3 @@
-
 import classNames from "../../util/classNames";
 import {GitPullRequestArrow} from "lucide-react";
 
@@ -24,17 +23,17 @@ interface ContributionGridProps {
 const ContributionGrid: React.FC<ContributionGridProps> = (props) => {
     const {calendar} = props;
     console.log(calendar)
-    return (<div className={"relative max-w-fit flex flex-col gap-3 opacity-75 mb-5"}>
-        <div className={"flex flex-row items-center justify-between"}>
+    return (<div className={"relative w-full max-w-2xl flex flex-col gap-3 opacity-75 mb-5"}>
+        <div className={"flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between"}>
             <label className={"flex flex-row gap-2 items-center"}>
                 <GitPullRequestArrow size={15}/>
                 <span><a href="https://github.com/CharlesDegraeuwe" target={"_blank"} className={"hover:underline"}>My GitHub</a> Activity:</span>
             </label>
             <span className={"font-medium text-sm text-zinc-400"}>{calendar?.totalContributions} total contributions</span>
         </div>
-        <div className={"w-full max-w-fit min-h-fit grid-cols-27 border border-zinc-300 rounded-2xl p-3 gap-2 grid bg-white shadow-lg"}>
+        <div className={"w-full min-h-fit grid-cols-27 border border-zinc-300 rounded-2xl p-3 gap-1.5 md:gap-2 grid bg-white shadow-lg"}>
             {calendar?.weeks.slice(26, calendar?.weeks.length).map((week, index) => (
-                <div key={index} className={"min-w-0 min-h-0 w-full h-full flex-1 flex flex-col gap-2"}>
+                <div key={index} className={"min-w-0 min-h-0 w-full h-full flex-1 flex flex-col gap-1.5 md:gap-2"}>
                     {week.contributionDays.map((day) => (<
                         div
                             key={day.date}
@@ -42,13 +41,16 @@ const ContributionGrid: React.FC<ContributionGridProps> = (props) => {
                             style={{
                                 background: calcColor(day.contributionCount)
                             }}
-                        className={classNames('min-w-4 max-w-4 w-4 min-h-4 max-h-4 h-4 rounded-sm')}/>
+                        className={classNames('w-full aspect-square rounded-sm')}/>
                     ))}
                 </div>
             ))}
         </div>
     </div>)
 }
+
+
+//TODO kleurschema beetje aanpasse
 
 function calcColor(count: number) {
     if(count >= 50) {

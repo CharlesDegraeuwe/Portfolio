@@ -1,5 +1,6 @@
 import classNames from "../../util/classNames";
 
+//TODO vervangen door md file voor template
 const OPLEIDING = [
     {
         datum: 2006,
