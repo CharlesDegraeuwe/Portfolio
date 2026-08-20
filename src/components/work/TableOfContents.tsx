@@ -39,7 +39,7 @@ export default function TableOfContents({headings}: {headings: Heading[]}) {
     }, [headings]);
 
     return (
-        <nav className="absolute right-0 min-w-48 top-1/2 -translate-y-1/2">
+        <nav className="max-md:hidden absolute right-0 min-w-48 top-1/2 -translate-y-1/2">
             <div className={"relative min-w-0 min-h-0 flex"}>
                 <div className={"w-[1.5px] h-full z-0 bg-zinc-300 absolute left-0"}/>
                 <div className={"flex-1 flex flex-col gap-2 z-10"}>
