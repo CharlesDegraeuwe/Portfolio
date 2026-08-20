@@ -13,4 +13,8 @@ const work = defineCollection({
     }),
 });
 
-export const collections = {work};
+const about = defineCollection({
+    loader: glob({pattern: '**/*.md', base: './src/content/about'}),
+});
+
+export const collections = {work, about};

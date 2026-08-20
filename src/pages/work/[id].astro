@@ -1,6 +1,6 @@
 ---
 import {getCollection, render} from 'astro:content';
-import MySiteLayout from '../../layouts/MySiteLayout.astro';
+import RootLayout from "../../layouts/RootLayout.astro";
 import ArrowLeft from '@lucide/astro/icons/arrow-left';
 import TableOfContents from '../../components/work/TableOfContents';
 
@@ -16,7 +16,7 @@ const {project} = Astro.props;
 const {Content, headings} = await render(project);   // markdown-body -> component
 ---
 
-<MySiteLayout title={project.data.title} description={project.data.description}>
+<RootLayout title={project.data.title} description={project.data.description}>
     <main class="main-page article-scroll w-full max-w-none h-full overflow-y-auto flex scroll-hidden">
         <div class="w-full max-w-240 flex gap-12 items-start justify-start scroll-hidden">
             <div class="min-w-0 flex-1 flex flex-col gap-8 scroll-hidden">
@@ -45,4 +45,4 @@ const {Content, headings} = await render(project);   // markdown-body -> compone
 
         </div>
     </main>
-</MySiteLayout>
+</RootLayout>

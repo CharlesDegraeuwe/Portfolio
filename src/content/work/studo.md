@@ -5,6 +5,7 @@ date: "2025 to Present"
 link: "/work/studo"
 tags: ["NextJS", "NestJS", "Rust", "Astro", "Postgres"]
 index: 1
+type: "project"
 ---
 
 ![Overview of the studo homepage](/work/studo.png "Studo homepage")

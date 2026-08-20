@@ -1,17 +1,14 @@
 ---
 import {getCollection} from 'astro:content';
-import MySiteLayout from '../../layouts/MySiteLayout.astro';
+import RootLayout from "../../layouts/RootLayout.astro";
 import WorkSection from '../../components/work/WorkSection';
+import Title from "../../components/layout/title/title.astro";
 
 const projects = (await getCollection('work')).map((entry) => entry.data);
 ---
-<MySiteLayout title="Work" description="A selection of products and tools I've designed and built.">
+<RootLayout title="Work" description="A selection of products and tools I've designed and built.">
     <main class="main-page gap-5 flex flex-col">
-        <section>
-            <h3>Recent projects</h3>
-            <h1>Work</h1>
-            <h2>A selection of products and tools I’ve designed and built.</h2>
-        </section>
+        <Title title="Work" subtitle="Recent projects" description="A selection of products and tools I’ve designed and built." noBorder/>
         <WorkSection projects={projects}/>
     </main>
-</MySiteLayout>
+</RootLayout>

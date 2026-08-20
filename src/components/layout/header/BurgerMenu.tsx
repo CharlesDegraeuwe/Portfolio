@@ -4,30 +4,46 @@ import type {SetStateAction} from "react";
 
 interface BurgerMenuProps {
     isOpen: boolean;
-    setIsOpen: React.Dispatch<SetStateAction<boolean>>
+    triggerButton: React.RefObject<HTMLButtonElement | null>;
 }
 
+const OPTIONS = [
+    {
+        href: "/",
+        label: "home",
+        delay: 550
+    },
+    {
+        href: "/about",
+        label: "about",
+        delay: 650
+    },
+    {
+        href: "/work",
+        label: "work",
+        delay: 750
+    },
+]
 const BurgerMenu: React.FC<BurgerMenuProps> = (props) => {
-    const {isOpen, setIsOpen} = props;
+    const {isOpen, triggerButton} = props;
+    const toggleTrigger = () => {
+        if(triggerButton.current) {
+            triggerButton.current.click();
+        }
+    }
     return (<div className={`burger_menu ${isOpen ? "burger_active" : ""}`}>
         <div className={"burger_menu_outer_container"}>
             <div>
                 <div>
-                    <a href="/" onClick={() => setIsOpen(false)}>
-                        <AnimateOnMount show={isOpen} delay={550}>
-                            Home
-                        </AnimateOnMount>
-                    </a>
-                    <a href="/work" onClick={() => setIsOpen(false)}>
-                        <AnimateOnMount show={isOpen} delay={650}>
-                            Work
-                        </AnimateOnMount>
-                    </a>
-                    <a href="/blog" onClick={() => setIsOpen(false)}>
-                        <AnimateOnMount show={isOpen} delay={750}>
-                            Blog
-                        </AnimateOnMount>
-                    </a>
+                    {
+                        OPTIONS.map((option, index) => (
+                            <a href={option.href} onClick={() => toggleTrigger}>
+                                <AnimateOnMount show={isOpen} delay={option.delay} className={"capitalize"}>
+                                    {option.label}
+                                </AnimateOnMount>
+                            </a>
+                        ))
+                    }
                 </div>
                 <div>
                     <span>
@@ -35,7 +51,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = (props) => {
                         FIND ME ELSEWHERE
                           </AnimateOnMount>
                     </span>
-                    <a href="https://www.instagram.com/charles.dgrw/" className={"home_a"} >
+                    <a href="https://www.instagram.com/charles.dgrw/" className={"home_a"}>
                         <AnimateOnMount show={isOpen} delay={650}>
                             Instagram
                         </AnimateOnMount>

@@ -1,0 +1,20 @@
+---
+import classNames from "../../../util/classNames.ts";
+interface Props {
+    title: string;
+    subtitle?: string;
+    description?: string
+    noBorder?: boolean
+}
+const {
+    title,
+    subtitle,
+    description,
+    noBorder = false
+} = Astro.props;
+---
+<section class={classNames("pb-10", !noBorder && "border-b border-zinc-200 ")}>
+    <h3>{subtitle}</h3>
+    <h1>{title}</h1>
+    <h2>{description}</h2>
+</section>

@@ -5,6 +5,7 @@ date: "2026 to Present"
 link: "/work/jurimesh"
 tags: ["React", "Fastify", "Rust workers"]
 index: 2
+type: "job"
 ---
 ![Overview of the jurimesh landingpage](/work/jurimesh.png "landing page")
 

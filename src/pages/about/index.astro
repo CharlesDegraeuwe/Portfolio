@@ -1,0 +1,61 @@
+---
+import ContributionGrid from "../../components/about/ContributionGrid";
+import {getEntry, render} from "astro:content";
+import RootLayout from "../../layouts/RootLayout.astro";
+import EductionTimeLine from "../../components/about/EductionTimeLine.tsx";
+import Title from "../../components/layout/title/title.astro";
+
+const username = "CharlesDegraeuwe";
+
+const query = `
+  query($username: String!) {
+    user(login: $username) {
+      contributionsCollection {
+        contributionCalendar {
+          totalContributions
+          weeks {
+            contributionDays {
+              date
+              contributionCount
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const response = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
+    },
+    body: JSON.stringify({
+        query,
+        variables: { username },
+    }),
+});
+
+const json = await response.json();
+if (json.errors) {
+    console.error("GitHub API error:", json.errors);
+}
+const calendar = json.data?.user?.contributionsCollection?.contributionCalendar;
+
+const introduction = await getEntry('about', 'introduction')
+if (!introduction) throw new Error("Missing 'about/introduction' content entry");
+const { Content: Introduction } = await render(introduction);
+
+---
+<RootLayout title="About">
+    <main class="main-page article-scroll w-full max-w-none h-full overflow-y-auto flex flex-col gap-5 scroll-hidden">
+        <Title title="About" subtitle="Background & Info"/>
+        <section class="flex flex-col gap-5">
+            <Introduction/>
+        </section>
+        <ContributionGrid client:load calendar={calendar}/>
+        <h2>Education</h2>
+        <EductionTimeLine client:load/>
+    </main>
+</RootLayout>
