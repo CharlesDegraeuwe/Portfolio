@@ -29,7 +29,7 @@
 
 body {
     @apply font-google-sans text-zinc-800 overflow-hidden bg-amber-50/30 p-7 max-md:p-4 w-screen h-screen flex flex-col gap-5 min-w-0 min-h-0 flex-1;
-    user-select: none;
+   
 
 }
 ::selection {
