@@ -9,7 +9,7 @@ interface Project {
     link: string;
     index: number;
     tags?: string[];
-    types: string[];
+    types?: string[];
 }
 
 const WorkSection = ({projects}: { projects: Project[] }) => {
@@ -28,9 +28,9 @@ const WorkSection = ({projects}: { projects: Project[] }) => {
                                 <div className={"flex flex-col gap-1 min-w-0 flex-1"}>
                                     <div className={"flex flex-row items-center gap-3"}>
                                         <span className={"font-georgia text-xl md:text-3xl"}>{section.title}</span>
-                                        {section.types.map(type => (
+                                        {section.types?.map(type => (
                                             <span
-                                                className={classNames("px-2.5 capitalize text-[13px] rounded-full py-px shadow-sm font-medium", type === "project" ? "bg-amber-200/75 text-amber-700 " : type === "w.i.p." ? "shadow-none text-xs opacity-50 border" :  "bg-blue-200 text-blue-700")}>
+                                                className={classNames("px-2.5 capitalize text-[13px] rounded-full py-px shadow-sm font-medium", type === "project" ? "bg-amber-200/75 text-amber-700 " : type.toLowerCase() === "w.i.p." ? "shadow-none text-xs opacity-50 border" :  "bg-blue-200 text-blue-700")}>
                                                 {type}
                                         </span>
                                         ))}
