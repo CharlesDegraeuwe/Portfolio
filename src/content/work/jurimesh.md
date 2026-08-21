@@ -37,7 +37,7 @@ Since I started I've grown a lot, both technically and in the amount of ownershi
 * Fastify
 * Rust
 
-## Gained Skills
+## Engineering challenges
 
 Jurimesh is where I learned to work inside an existing production codebase and team, rather than one I'd built myself:
 

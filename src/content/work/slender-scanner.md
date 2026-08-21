@@ -39,7 +39,7 @@ The mobile app is where warehouse staff scan items and place orders, the admin d
 * Fastify MCP
 * PostgreSQL
 
-## Gained Skills
+## Engineering challenges
 
 *\*Slender Scanner was largely about applying what I'd learned on Studo and Jurimesh to a new domain. The genuinely new ground for me was:*
 
