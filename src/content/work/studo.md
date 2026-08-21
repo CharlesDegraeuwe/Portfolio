@@ -6,7 +6,7 @@ link: "/work/studo"
 tags: ["NextJS", "NestJS", "Rust", "Astro", "Postgres"]
 index: 1
 preview: "https://beta.studo.study/en/welcome"
-types: ["project", "w.i.p."]
+types: ["project", "W.I.P."]
 ---
 
 

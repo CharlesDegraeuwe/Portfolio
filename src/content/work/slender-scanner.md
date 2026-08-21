@@ -6,7 +6,7 @@ link: "/work/slender-scanner"
 tags: ["NextJS", "Kotlin", "Astro", "Fastify"]
 index: 3
 preview: ""
-types: ["project", "w.i.p."]
+types: ["project", "W.I.P."]
 ---
 
 ![Overview of the slenderscanner loginpage](/work/slenderscanner.png "login page")

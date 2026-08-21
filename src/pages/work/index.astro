@@ -12,6 +12,6 @@ const projects = (await getCollection('work')).map((entry) => entry.data);
         <AnimateOnMount client:load delay={0}>
             <Title title="Work" subtitle="Recent projects" description="A selection of products and tools I’ve designed and built." noBorder/>
         </AnimateOnMount>
-        <WorkSection projects={projects} client:load/>
+        <WorkSection projects={projects ?? []} client:load/>
     </main>
 </RootLayout>
