@@ -5,7 +5,7 @@ date: "2025 to Present"
 link: "/work/studo"
 tags: ["NextJS", "NestJS", "Rust", "Astro", "Postgres"]
 index: 1
-preview: "https://beta.studo.study/en/welcome"
+preview: "https://studo.study"
 types: ["project", "W.I.P."]
 ---
 
@@ -85,4 +85,3 @@ Studo is where most of my growth actually happened. Owning it end-to-end forced 
 ## Links
 
 - [studo.study](https://studo.study)
-- [beta.studo.study](https://beta.studo.study)
