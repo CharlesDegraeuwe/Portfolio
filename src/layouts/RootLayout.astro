@@ -13,7 +13,7 @@ interface Props {
 
 const {
     title,
-    description = "Charles Degraeuwe - student full stack engineer. Selected products and tools I've designed and built.",
+    description = "Charles Degraeuwe - student full stack engineer.",
     image = "/pfp.jpg",
     schema,
     noindex = false,
@@ -68,7 +68,6 @@ const baseSchema = {
         <link rel="canonical" href={canonical} />
         {noindex && <meta name="robots" content="noindex, follow" />}
 
-        <!-- Open Graph -->
         <meta property="og:type" content="website" />
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={description} />
@@ -76,7 +75,6 @@ const baseSchema = {
         <meta property="og:image" content={ogImage} />
         <meta property="og:site_name" content={siteName} />
 
-        <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={fullTitle} />
         <meta name="twitter:description" content={description} />
