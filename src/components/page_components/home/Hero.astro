@@ -1,4 +1,5 @@
 ---
+import { Code } from "@lucide/astro";
 import GraduationCap from "@lucide/astro/icons/graduation-cap";
 import {Scroll} from "lucide-react";
 ---
@@ -11,9 +12,13 @@ import {Scroll} from "lucide-react";
     <div class="flex flex-col justify-center gap-1 max-md:text-center">
         <a href="/about"><h1>Charles Degraeuwe</h1></a>
         <div class="flex flex-row max-sm:flex-col gap-10 max-sm:gap-2 opacity-50">
-            <a href="/work" class="home_a flex items-center gap-2">
+            <a href="/about" class="home_a flex items-center gap-2">
                 <GraduationCap size={15}/>
-                Student full-stack engineer
+                About me
+            </a>
+            <a href="/work" class="home_a flex items-center gap-2">
+                <Code size={15}/>
+                My work
             </a>
             <a
                     href={"/resume/Charles Degraeuwe - Full Stack Developer.pdf"}
