@@ -85,3 +85,4 @@ Studo is where most of my growth actually happened. Owning it end-to-end forced 
 ## Links
 
 - [studo.study](https://studo.study)
+- [GitHub](https://github.com/studo-study)
