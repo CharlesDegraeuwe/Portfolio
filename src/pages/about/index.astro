@@ -56,7 +56,7 @@ const {Content: Introduction} = await render(introduction);
             description="About Charles Degraeuwe — full-stack engineering student, founder of Studo, with a background in design and videography. Education, GitHub activity and contact.">
     <main class="main-page article-scroll w-full max-w-none h-full overflow-y-auto flex flex-col gap-5 scroll-hidden">
         <AnimateOnMount client:load delay={0}>
-            <Title title="About" subtitle="Background & Info"/>
+            <Title title="About" subtitle="Background & Info" tags={["Ghent - Belgium","Full Stack", "Web","Mobile", "Product Engineering"]}/>
         </AnimateOnMount>
         <AnimateOnMount client:load delay={100}>
             <section class="flex flex-col gap-5">

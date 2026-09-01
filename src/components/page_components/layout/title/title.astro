@@ -5,16 +5,27 @@ interface Props {
     subtitle?: string;
     description?: string
     noBorder?: boolean
+    tags?: string[];
 }
 const {
     title,
     subtitle,
     description,
-    noBorder = false
+    noBorder = false,
+    tags = [],
 } = Astro.props;
 ---
 <section class={classNames("pb-10", !noBorder && "border-b border-zinc-200 ")}>
     {subtitle && <p class="tracking-wider uppercase font-medium font-roboto text-xs opacity-40">{subtitle}</p>}
     <h1>{title}</h1>
     {description && <p class="text-[1.2rem] font-extralight opacity-50">{description}</p>}
+    <div class="flex flex-row items-center gap-1">
+    {tags && tags.map((tag, index) => {
+        return (
+                <div class="px-2 bg-amber-50 py-0.5 rounded-4xl border text-sm border-zinc-200">
+                    {tag}
+                </div>)
+        })
+    }
+    </div>
 </section>
