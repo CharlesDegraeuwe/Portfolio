@@ -1,7 +1,7 @@
 ---
 title: "Jurimesh"
 description: "AI-powered due diligence for legal teams."
-date: "march 2026 - august 2026"
+date: "march 2026 - present"
 link: "/work/jurimesh"
 preview: "https://www.jurimesh.com"
 tags: ["React", "Fastify", "Rust"]
