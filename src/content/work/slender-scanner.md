@@ -4,7 +4,7 @@ description: "ERP scanning tool for warehouses."
 date: "2026 to Present"
 link: "/work/slender-scanner"
 tags: ["NextJS", "Kotlin", "Astro", "Fastify"]
-index: 3
+index: 4
 preview: ""
 types: ["project", "W.I.P."]
 ---

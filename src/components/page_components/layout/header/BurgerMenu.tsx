@@ -36,8 +36,8 @@ const BurgerMenu: React.FC<BurgerMenuProps> = (props) => {
             <div>
                 <div>
                     {
-                        OPTIONS.map((option, index) => (
-                            <a href={option.href} onClick={() => toggleTrigger}>
+                        OPTIONS.map((option) => (
+                            <a key={option.href} href={option.href} onClick={() => toggleTrigger()}>
                                 <AnimateOnMount show={isOpen} delay={option.delay} className={"capitalize"}>
                                     {option.label}
                                 </AnimateOnMount>
