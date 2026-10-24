@@ -6,7 +6,7 @@ link: "/work/jurimesh"
 preview: "https://www.jurimesh.com"
 tags: ["React", "Fastify", "Rust"]
 index: 2
-types: ["freelance"]
+types: ["part-time"]
 ---
 
 ## Overview

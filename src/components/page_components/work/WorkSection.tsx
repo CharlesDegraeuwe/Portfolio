@@ -30,7 +30,10 @@ const WorkSection = ({projects}: { projects: Project[] }) => {
                                         <span className={"font-georgia text-xl md:text-3xl"}>{section.title}</span>
                                         {section.types?.map(type => (
                                             <span
-                                                className={classNames("px-2.5 capitalize text-[13px] rounded-full py-px shadow-sm font-medium", type === "project" ? "bg-amber-200/75 text-amber-700 " : type.toLowerCase() === "w.i.p." ? "shadow-none text-xs opacity-50 border" :  "bg-blue-200 text-blue-700")}>
+                                                className={classNames("px-2.5 capitalize text-[13px] rounded-full py-px shadow-sm font-medium",
+                                                    type === "project" ? "bg-amber-200/75 text-amber-700 " :
+                                                        type.toLowerCase() === "w.i.p." ? "shadow-none text-xs opacity-50 border" :
+                                                    type.toLowerCase() === "part-time" ? "bg-indigo-200 text-indigo-700" : "bg-blue-200 text-blue-700")}>
                                                 {type}
                                         </span>
                                         ))}
