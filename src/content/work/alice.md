@@ -1,7 +1,7 @@
 ---
 title: "Alice Law"
 description: "Allround legal AI tool for lawyers."
-date: "August 2026 - present"
+date: "August 2026 - November 2026"
 link: "/work/alice"
 preview: "https://www.alice.law"
 tags: ["WXT", "React", "Express", "Python"]
